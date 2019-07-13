@@ -1,0 +1,33 @@
+<!--pages/list/list.wxml-->
+<view>
+  <!-- 包含searchbar -->
+  <include src="./weui-searchbar.wxml" />
+  
+  <block wx:for="{{list}}" wx:key="{{item.id}}">
+    <view class='cell'>
+      <view class='imageView'>
+        <image src='{{item.images[0]}}'></image>
+      </view>
+      <view class='meta'>
+        <text class='name'>{{item.name}}</text>
+        <text class='phone'>{{item.phone}}</text>
+        <text class='address'>{{item.address}}</text>
+        <text class='businessHours'>{{item.businessHours}}</text>
+      </view>
+      <view class="score">
+        <text>{{item.score ||0}}</text>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{hasMore}}">
+    <view class='loadMore'>
+      <text class="loadMore loading">正在加载...</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='loadMore'>
+      <text>没有更多数据啦</text>
+    </view>
+  </block>
+</view>
